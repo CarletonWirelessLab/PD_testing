@@ -1,4 +1,4 @@
-function [locs, threshold] = detectPacketLocations(fileName, sampRate, duration, f)
+function [cData, locs, threshold] = detectPacketLocations(fileName, sampRate, duration, f)
 % locs = detectPacketLocations(fileName, sampRate, duartion)
 % Reads wifi data from the file fileName, and returns the start and end location of
 % each packet.
@@ -7,6 +7,7 @@ function [locs, threshold] = detectPacketLocations(fileName, sampRate, duration,
 % Edit: Add check if fileName is not string and duration is not a number
 fid = fopen(fileName , 'r');
 rawData = fread(fid, 2 * sampRate * duration, 'float32');
+fclose(fid);
 %rawData = rawData1(30000001:end);
 iData = rawData(1:2:end);
 qData = rawData(2:2:end);
@@ -21,6 +22,7 @@ elseif qdl > idl
 end
 
 cData = iData + 1j * qData;
+
 envData = abs(cData).^2;
 
 threshold = f * (mean(envData) + sqrt(var(envData)));

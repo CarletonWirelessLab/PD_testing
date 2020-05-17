@@ -1,11 +1,9 @@
 clc; 
 close all; clear all;
-% fileName = 'Testing1noiseLess.bin';
-fileName = '../Receive5.bin';
-% fileName = 'testGenFrame.bin';
-% fileName = 'JamSignalFrame.bin';
+% fileName = 'ReceiveEricsson.bin';
+fileName = 'Receivenoise.bin';
 
-
+% Set the first 3 Octets of the UUT MAC Address
 % Ericsson AP = '00:0D:67', also BelAir
 % TP-Link AP  = 'D4:6E:0E', 
 % ASUS AP     = '40:16:7E'
@@ -15,28 +13,14 @@ fileName = '../Receive5.bin';
 % USB_DLink   = '90:94:E4'
 UUT_MAC = '00:0D:67'; 
 
-nullingTime = 1e-3;
-sampRate = 20e6;
-bandWidth = 20; % MHz
-duration = Inf;       % Process duration In seconds
-packetIndex = 2;
-f = 0.015;
+sampRate = 20e6; % USRP sampling rate
+bandWidth = 20; % channel bandwidth in MHz
+duration = Inf; % Process duration In seconds (Inf -> to end of file)
+f = 0.15; % noise threshold fine tuning
 % Find packetstart and end epochs
-[locs, threshold] = detectPacketLocations(fileName, sampRate, duration, f); % Kareem's code
-% [locs, threshold] = PacketDetection (fileName, sampRate, duration, f); % Salime's Code
+[cData, locs, threshold] = detectPacketLocations(fileName, sampRate, duration, f); % Kareem's code
 
-fid = fopen(fileName , 'r');
-rawData = fread(fid, 2 * sampRate * duration, 'float32');
-iData = rawData(1:2:end);
-qData = rawData(2:2:end);
-idl = length(iData);
-qdl = length(qData);
-if     idl > qdl
-        iData = iData(1:qdl);
-elseif qdl > idl
-        qData = qData(1:idl);
-end
-cData = iData + 1j * qData;
+
 
 TxMacExist = 0;
 silenc = [];
@@ -69,7 +53,7 @@ preambleMeasureErr = 2;
 frameMeasureErr = 2;
 pf = 1; % display or not
 
-for ii = 4:length(locs)
+for ii = 2:length(locs)
     packet =  1 * cData(locs(ii, 1):locs(ii, 2));
     if (locs(ii, 2)-locs(ii, 1))/20 < 20 - 2
         fprintf('Noise skipped \n');
