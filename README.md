@@ -66,9 +66,9 @@ Processing:
 ## Test Examples
 
 We provide two examples for the preamble detection test. As seen in the passed test below, the UUT succeeded to detect the preamble and stoped transmitting until the end of the preamble.
-![alt text](docs/images/pass_test.jpg "  Passed test " )
+![alt text](docs/images/pass_test.jpg "  Passed test  )
 
-
+<!--<img src= "docs/images/pass_test.jpg " width="200" height="200">-->
 
 While in the failed test, the UUT intervened the communication channel and transmitted in the silent period.
 ![alt text](docs/images/failed_test.jpg "  Failed test ")
