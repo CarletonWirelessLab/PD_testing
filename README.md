@@ -47,7 +47,7 @@ Network Setup:
 
 USRP Setup: 
 
-We use two USRPs, namely, Jammer and  Sampler USRP
+We use two USRPs, namely, Jammer (Tx)and  Sampler (Rx)
 
 Jammer:
 1. Connect the Jammer according to the aforementioned figure
