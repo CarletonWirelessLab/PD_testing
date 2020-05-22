@@ -47,11 +47,11 @@ Network Setup:
 
 USRP Setup: 
 
-We use two USRPs, namely, Jammer (Tx)and  Sampler (Rx)
+We use two USRPs, namely, Jammer (Tx) and  Sampler (Rx)
 
 Jammer:
 1. Connect the Jammer according to the aforementioned figure
-2. Using MATLAB, generate the IQ components required to by sent by the Jammer
+2. Using MATLAB, generate special IQ components  to be sent by the Jammer
 3. Run sendIQ.py to send the IQ components
 
 Sampler:
@@ -61,7 +61,8 @@ Sampler:
 
 Processing:
 1. Using MATLAB, edit the MAC address of the UUT (UUT_MAC) in windowAnalyze_p2.m
-2. Run windowAnalyze to process the samples and generate the results
+2- Upload the (---.bin) file that has the received combined signals 
+2. Run windowAnalyze to process the samples and obtain the results
 
 
 
