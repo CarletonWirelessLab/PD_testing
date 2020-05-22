@@ -39,6 +39,16 @@ Additionally, one script (```utils/writeIQ.py```) is currently written in Python
 Early versions of the tool relied upon the use of the [MATLAB Engine for Python](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html); however a significant effort was undertaken by the members of the Carleton University Broadband Networks Laboratory to rewrite the prototypical scripts in Python 3. Copies of the original MATLAB code are contained in the ```matlab``` folder for reference.-->
 
 ## Installation and Test Setup
+Step 1. Connect the USRP to a computer that will act as a client
+Step 2. 
+Step 1 - Tx:
+1. MATLAB code -> generate IQ components in a file ??.bin
+2. Python code -> run sendIQ.py to send the IQ components continuously through the USRP
+
+Step 2 - Wireless communication link:
+1. connect 
+Step 3 - Rx:
+
 
 The following must be performed in order to make Preamble detection test:
 
