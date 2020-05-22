@@ -57,18 +57,9 @@ Sampler:
 3. The IQ components will be stored in a ??.bin file
 
 Processing:
-Using MATLAB, run windowAnalyze_p2.m to process the data and generate the results
+1. Using MATLAB, edit the MAC address of the UUT in windowAnalyze_p2.m
+2. run windowAnalyze to process the samples and generate the results
 
-
-1. Create network between UUT and CD
-    a. At UUT side use: iperf
-
-Test Step:
-Tx:
-
-Rx:
-The main file is windowAnalyze_p2.m
-1. Set the MAC address of the UUT to [UUT_MAC] in the windowAnalyze_p2.m file
 
 
 
