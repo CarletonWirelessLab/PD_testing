@@ -38,30 +38,17 @@ Preamble test was written and tested on systems running Fedora 28 and Ubuntu 16.
 Additionally, one script (```utils/writeIQ.py```) is currently written in Python 2, but will be updated as part of the project goals.
 Early versions of the tool relied upon the use of the [MATLAB Engine for Python](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html); however a significant effort was undertaken by the members of the Carleton University Broadband Networks Laboratory to rewrite the prototypical scripts in Python 3. Copies of the original MATLAB code are contained in the ```matlab``` folder for reference.-->
 
-## Installation and Test Setup
-Step 1. Connect the USRP to a computer that will act as a client
-Step 2. 
-Step 1 - Tx:
-1. MATLAB code -> generate IQ components in a file ??.bin
-2. Python code -> run sendIQ.py to send the IQ components continuously through the USRP
+## Test Setup
+Setup:
+1. Create network between UUT and CD
+    a. At UUT side use: iperf
 
-Step 2 - Wireless communication link:
-1. connect 
-Step 3 - Rx:
+Test Step:
+Tx:
 
-
-The following must be performed in order to make Preamble detection test:
-
-1. ```sudo apt install git python3-numpy python3-matplotlib python3-pip gnuradio iperf python3-dev```
-2. ```pip3 install pyqt5 netifaces``` (this may need to be run with sudo)
-3. Run ```uhd_images_downloader``` to prepare the FPGA binary for use with the USRP
-4. From the home directory (or wherever you want to store your copy of the project), ```git clone https://github.com/CarletonWirelessLab/ANTS```
-5. Run ANTS by typing ```sudo python3 ants/ants``` from the main ANTS directory;
-6. Set test parameters - particularly the access point IP address - and press "Run";
-7. Collect the results.
-
-Depending on the Ubuntu version (i.e. 18.04 or later) you may need to additionally install ```ifconfig``` and related legacy test tools.
-
+Rx:
+The main file is windowAnalyze_p2.m
+1. Set the MAC address of the UUT to [UUT_MAC] in the windowAnalyze_p2.m file
 
 
 
