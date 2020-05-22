@@ -1,6 +1,11 @@
 # Preamble Detection Test
 
-In the IEEE 802.11 standard, each device should detect and extract the information in the preamble  to be able to determine whether the signal is noise or not. In addition, to avoid the packets collision during the transmission. The frame length in the preamble should be determined, where the device can know the period to be silent within. In this test, we check the compliance of commercial WiFi networking devices to the IEEE 802.11 standard. 
+<!-- In the IEEE 802.11 standard, each device should detect and extract the information in the preamble  to be able to determine whether the signal is noise or not. In addition, to avoid the packets collision during the transmission. The frame length in the preamble should be determined, where the device can know the period to be silent within. In this test, we check the compliance of commercial WiFi networking devices to the IEEE 802.11 standard. -->
+
+
+The goal of this work is to develop an experimental
+hardware testbed for verifying the compliance of the commercial
+Unit Under Test (UUT)  with the preamble  frames that share the same communication  channel in IEEE 802.11 standard. In this experiment, we use  Universal Software Radio Peripheral (USRP) to capture and down-convert the Wi-Fi frames to the base-band. The captured data  by the USRP is utilized to extract the behavior of  different UUTs when they receive the preamble frames. The  standard states that each device should detect and extract the information in the preamble  to be able to determine whether the signal is noise or not. Moreover, to avoid the packets collision during the transmission. The frame length in the preamble should be determined, where the device can obtain the silent period to stop transmitting. In this test, we check the compliance of commercial WiFi networking devices to the IEEE 802.11 standard.
 
 
 **Note**: This project is under active development, and a stable release branch has not yet been established.
@@ -15,7 +20,7 @@ The following is a list of essential components for the preamble detection test:
 * A software-defined radio capable of transmitting and receiving on the same wireless bands as the UUTs
 * An anechoic chamber, or alternatively a series of shielded cabling to connect the devices in use
 
-Preamble test was originally developed and tested using the [Ettus Research B200](https://www.ettus.com/product/details/UB200-KIT) software-defined radio device, which is the core measurement tool that senses the wireless channel and collects the data for further processing. No other devices are currently supported (although additional devices are on the roadmap). The (UUT) in a typical test setup is a either a commercially-available USB WiFi device, or a wireless router.
+Preamble test was originally developed and tested using the [Ettus Research X300](https://www.ettus.com/all-products/X300-KIT/) software-defined radio device, which is the core measurement tool that senses the wireless channel and collects the data for further processing. No other devices are currently supported (although additional devices are on the roadmap). The (UUT) in a typical test setup is a either a commercially-available USB WiFi device, or a wireless router.
 
 Below is a diagram showing an example test setup previously used at the Carleton Broadband Networks Laboratory:
 
@@ -26,12 +31,39 @@ Below is a diagram showing an example test setup previously used at the Carleton
 Preamble test was written and tested on systems running Fedora 28 and Ubuntu 16.04, but it should work on any modern Linux operating system with the following installed:
 
 * Python 3 (written and tested on 3.6.5 and later 3.7.x)
-* PyQt5
 * gnuradio (for the core writeIQ script)
+* Matlab
 
+<!--
 Additionally, one script (```utils/writeIQ.py```) is currently written in Python 2, but will be updated as part of the project goals.
+Early versions of the tool relied upon the use of the [MATLAB Engine for Python](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html); however a significant effort was undertaken by the members of the Carleton University Broadband Networks Laboratory to rewrite the prototypical scripts in Python 3. Copies of the original MATLAB code are contained in the ```matlab``` folder for reference.-->
 
-Early versions of the tool relied upon the use of the [MATLAB Engine for Python](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html); however a significant effort was undertaken by the members of the Carleton University Broadband Networks Laboratory to rewrite the prototypical scripts in Python 3. Copies of the original MATLAB code are contained in the ```matlab``` folder for reference.
+## Installation and Test Setup
+
+The following must be performed in order to make Preamble detection test:
+
+1. ```sudo apt install git python3-numpy python3-matplotlib python3-pip gnuradio iperf python3-dev```
+2. ```pip3 install pyqt5 netifaces``` (this may need to be run with sudo)
+3. Run ```uhd_images_downloader``` to prepare the FPGA binary for use with the USRP
+4. From the home directory (or wherever you want to store your copy of the project), ```git clone https://github.com/CarletonWirelessLab/ANTS```
+5. Run ANTS by typing ```sudo python3 ants/ants``` from the main ANTS directory;
+6. Set test parameters - particularly the access point IP address - and press "Run";
+7. Collect the results.
+
+Depending on the Ubuntu version (i.e. 18.04 or later) you may need to additionally install ```ifconfig``` and related legacy test tools.
+
+
+
+
+## Test Examples
+
+In this section, we provide two examples for the preamble detection test. As seen in the passed test below, the UUT succeeded to detect the preamble and stoped transmitting until the end of the preamble.
+![alt text](docs/images/pass_test.jpg "  Passed test ")
+
+While the failed test, the UUT intervened the communication channel and transmitted in the silent period.
+![alt text](docs/images/failed_test.jpg "  Failed test ")
+
+
 
 ## Authors
 
