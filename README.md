@@ -39,7 +39,27 @@ Additionally, one script (```utils/writeIQ.py```) is currently written in Python
 Early versions of the tool relied upon the use of the [MATLAB Engine for Python](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html); however a significant effort was undertaken by the members of the Carleton University Broadband Networks Laboratory to rewrite the prototypical scripts in Python 3. Copies of the original MATLAB code are contained in the ```matlab``` folder for reference.-->
 
 ## Test Setup
-Setup:
+Network Setup:
+1. Connect the client PC to the Access point via Ethernet  
+2. Establish a wireless connection from the server PC to the Access point
+3. Enable the IPERF traffic on the server PC
+4. Start the IPERF traffic from the client PC to the server PC
+
+USRP Setup: (Jammer USRP and Sampler USRP)
+** After setting up the network
+Jammer:
+1. Connect the Jammer according to the aforementioned figure
+2. Using MATLAB, genreate the IQ components required to by sent by the Jammer
+3. Run sendIQ.py to send the IQ components
+Sampler:
+1. Connect the Sampler according to the aforementioned figure
+2. Run writeIQ.py for x amount of seconds (preferably 2 seconds) to sample the medium
+3. The IQ components will be stored in a ??.bin file
+
+Processing:
+Using MATLAB, run windowAnalyze_p2.m to process the data and generate the results
+
+
 1. Create network between UUT and CD
     a. At UUT side use: iperf
 
