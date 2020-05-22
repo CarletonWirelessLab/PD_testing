@@ -31,8 +31,9 @@ Below is a diagram showing an example test setup previously used at the Carleton
 Preamble test was written and tested on systems running Fedora 28 and Ubuntu 16.04, but it should work on any modern Linux operating system with the following installed:
 
 * Python 3 (written and tested on 3.6.5 and later 3.7.x)
-* gnuradio (for the core writeIQ script)
-* Matlab
+* Gnuradio (for the core writeIQ script)
+* Matlab software
+* Install the communication toolbox on Matlab
 
 <!--
 Additionally, one script (```utils/writeIQ.py```) is currently written in Python 2, but will be updated as part of the project goals.
@@ -44,6 +45,7 @@ Network Setup:
 2. Establish a wireless connection from the server PC to the Access point
 3. Enable the IPERF traffic on the server PC
 4. Start the IPERF traffic from the client PC to the server PC
+
 
 USRP Setup: 
 
