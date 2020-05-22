@@ -45,12 +45,15 @@ Network Setup:
 3. Enable the IPERF traffic on the server PC
 4. Start the IPERF traffic from the client PC to the server PC
 
-USRP Setup: (Jammer USRP and Sampler USRP)
-** After setting up the network
+USRP Setup: 
+
+We use two USRPs, namely, Jammer and  Sampler USRP
+
 Jammer:
 1. Connect the Jammer according to the aforementioned figure
 2. Using MATLAB, generate the IQ components required to by sent by the Jammer
 3. Run sendIQ.py to send the IQ components
+
 Sampler:
 1. Connect the Sampler according to the aforementioned figure
 2. Run writeIQ.py for x amount of seconds (preferably 2 seconds) to sample the medium
