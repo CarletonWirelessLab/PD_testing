@@ -49,16 +49,16 @@ USRP Setup: (Jammer USRP and Sampler USRP)
 ** After setting up the network
 Jammer:
 1. Connect the Jammer according to the aforementioned figure
-2. Using MATLAB, genreate the IQ components required to by sent by the Jammer
+2. Using MATLAB, generate the IQ components required to by sent by the Jammer
 3. Run sendIQ.py to send the IQ components
 Sampler:
 1. Connect the Sampler according to the aforementioned figure
 2. Run writeIQ.py for x amount of seconds (preferably 2 seconds) to sample the medium
-3. The IQ components will be stored in a ??.bin file
+3. The IQ components will be stored in a (---.bin) file
 
 Processing:
-1. Using MATLAB, edit the MAC address of the UUT in windowAnalyze_p2.m
-2. run windowAnalyze to process the samples and generate the results
+1. Using MATLAB, edit the MAC address of the UUT (UUT_MAC) in windowAnalyze_p2.m
+2. Run windowAnalyze to process the samples and generate the results
 
 
 
@@ -66,7 +66,9 @@ Processing:
 ## Test Examples
 
 In this section, we provide two examples for the preamble detection test. As seen in the passed test below, the UUT succeeded to detect the preamble and stoped transmitting until the end of the preamble.
-![alt text](docs/images/pass_test.jpg "  Passed test ")
+![alt text](docs/images/pass_test.jpg "  Passed test " )
+
+
 
 While the failed test, the UUT intervened the communication channel and transmitted in the silent period.
 ![alt text](docs/images/failed_test.jpg "  Failed test ")
