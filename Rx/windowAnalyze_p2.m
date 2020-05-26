@@ -59,7 +59,7 @@ for ii = 2:length(locs)
         fprintf('Noise skipped \n');
         continue;
     end
-    disp(['Packet #' char(string(ii)) ':'])
+    disp(['Frame #' char(string(ii)) ':'])
 %     if ii == 304
 %         keyboard;
 %     end
