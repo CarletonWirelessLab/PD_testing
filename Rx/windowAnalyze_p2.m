@@ -16,7 +16,7 @@ UUT_MAC = '00:0D:67';
 sampRate = 20e6; % USRP sampling rate
 bandWidth = 20; % channel bandwidth in MHz
 duration = Inf; % Process duration In seconds (Inf -> to end of file)
-f = 0.15; % noise threshold fine tuning
+f = 0.015; % noise threshold fine tuning
 % Find packetstart and end epochs
 [cData, locs, threshold] = detectPacketLocations(fileName, sampRate, duration, f); % Kareem's code
 
